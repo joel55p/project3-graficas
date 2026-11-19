@@ -207,7 +207,7 @@ fn dibujar_astro(
             intensidad = @max(0.15, normal.dotProduct(dir_luz));
         }
 
-        //bounding box recortada a pantalla
+        //bounding box recortada a pantalla, con ayuda de la IA
         const min_x = @min(a.x, @min(b.x, c.x));
         const max_x = @max(a.x, @max(b.x, c.x));
         const min_y = @min(a.y, @min(b.y, c.y));
@@ -225,7 +225,7 @@ fn dibujar_astro(
         var y = y0;
         while (y <= y1) : (y += 1) {
             var x = x0;
-            while (x <= x1) : (x += 1) {
+            while (x <= x1) : (x += 1) { 
                 const p = bar.Punto{
                     .x = @as(f32, @floatFromInt(x)) + 0.5,
                     .y = @as(f32, @floatFromInt(y)) + 0.5,
@@ -234,7 +234,7 @@ fn dibujar_astro(
                 const coords = bar.calcular(p, a, b, c) orelse break;
                 if (!bar.esta_dentro(coords)) continue;
 
-                const z = coords.u * proy0.z + coords.v * proy1.z + coords.w * proy2.z;
+                const z = coords.u * proy0.z + coords.v * proy1.z + coords.w * proy2.z;//tambien se sugerio ayuda de la IA -_-
                 const idx = y * fb.ancho + x;
                 if (z >= fb.zbuffer[idx]) continue;
 

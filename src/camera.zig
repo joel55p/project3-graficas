@@ -41,6 +41,7 @@ pub const Camera = struct {
 
     //va a convertir un punto en el mundo que es 3D a una coordenada en 2D
     pub fn proyectar(self: Camera, punto: rl.Vector3, ancho: f32, alto: f32, escala_fov: f32) ?Proyeccion {
+        //se realizo con ayuda de IA
         const rel = punto.subtract(self.Posicion);
         const z_cam = rel.x * self.Adelante.x + rel.z * self.Adelante.z;
 

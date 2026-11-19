@@ -18,6 +18,7 @@ pub const EsferaMalla = struct {
         //sobre latitud y longitud
         var caras: std.ArrayList(Cara) = .empty;
         
+            //implementado con ayuda de IA
 
         for (0..divisiones + 1) |lat| {
             const v = @as(f32, @floatFromInt(lat)) / @as(f32, @floatFromInt(divisiones));
